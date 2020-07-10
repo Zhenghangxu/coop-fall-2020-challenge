@@ -9,28 +9,28 @@ class EventSourcer {
       throw "parameter should be a number";
     }
   }
-  initMemory = () => {
+  initMemory() {
     if (!this.memory) {
       this.memory = [];
       this.memory.push(this.value);
       this.currentIndex = 0;
     }
-  };
-  add = (num) => {
+  }
+  add(num) {
     this.isNumber(num);
     this.initMemory();
     this.value += num;
     this.memory.push(this.value);
     this.currentIndex = this.memory.length - 1;
-  };
-  subtract = (num) => {
+  }
+  subtract(num) {
     this.isNumber(num);
     this.initMemory();
     this.value -= num;
     this.memory.push(this.value);
     this.currentIndex = this.memory.length - 1;
-  };
-  undo = () => {
+  }
+  undo() {
     this.initMemory();
 
     if (this.currentIndex > 0) {
@@ -39,8 +39,8 @@ class EventSourcer {
     } else {
       throw "current number can not be undo";
     }
-  };
-  redo = () => {
+  }
+  redo() {
     this.initMemory();
     if (this.currentIndex > 0 && this.currentIndex < this.memory.length - 1) {
       this.currentIndex += 1;
@@ -48,8 +48,8 @@ class EventSourcer {
     } else {
       throw "current number can not be redo";
     }
-  };
-  bulk_undo = (num) => {
+  }
+  bulk_undo(num) {
     this.initMemory();
     if (this.currentIndex > 0 && this.currentIndex - num >= 0) {
       this.currentIndex -= num;
@@ -57,8 +57,8 @@ class EventSourcer {
     } else {
       throw "current number can not be bulk_undo";
     }
-  };
-  bulk_redo = (num) => {
+  }
+  bulk_redo(num) {
     this.initMemory();
     if (
       this.currentIndex > 0 &&
@@ -69,7 +69,7 @@ class EventSourcer {
     } else {
       throw "current number can not be redo";
     }
-  };
+  }
 }
 // const testObj = new EventSourcer();
 // testObj.add(10);
