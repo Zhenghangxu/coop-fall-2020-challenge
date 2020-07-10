@@ -6,7 +6,6 @@ class EventSourcer {
     if (typeof num === "number") {
       return num;
     } else {
-      throw "parameter should be a number";
     }
   }
   initMemory() {
@@ -37,7 +36,6 @@ class EventSourcer {
       this.currentIndex -= 1;
       this.value = this.memory[this.currentIndex];
     } else {
-      throw "current number can not be undo";
     }
   }
   redo() {
@@ -46,7 +44,6 @@ class EventSourcer {
       this.currentIndex += 1;
       this.value = this.memory[this.currentIndex];
     } else {
-      throw "current number can not be redo";
     }
   }
   bulk_undo(num) {
@@ -55,7 +52,6 @@ class EventSourcer {
       this.currentIndex -= num;
       this.value = this.memory[this.currentIndex];
     } else {
-      throw "current number can not be bulk_undo";
     }
   }
   bulk_redo(num) {
@@ -67,14 +63,14 @@ class EventSourcer {
       this.currentIndex += num;
       this.value = this.memory[this.currentIndex];
     } else {
-      throw "current number can not be redo";
     }
   }
 }
-// const testObj = new EventSourcer();
+const testObj = new EventSourcer();
 // testObj.add(10);
 // testObj.subtract(2);
 // testObj.add(5);
+testObj.undo();
 // testObj.add(10);
 // testObj.add(5);
 // testObj.bulk_undo(3);
